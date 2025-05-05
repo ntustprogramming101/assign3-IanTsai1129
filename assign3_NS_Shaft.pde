@@ -69,7 +69,7 @@ void initializePlatforms() {
   // stage 1-1: generate 10 platforms with random positions on the screen
   for (int i = 0; i < NUM_PLATFORMS; i++) {
     // you need to change this line to create a new platform object with random horizontal positions, while distributed evenly in vertical space
-    platforms[i] = new Platform(0,0); 
+    platforms[i] = new Platform(random(width), i * (height / NUM_PLATFORMS) );
   }
   // End of stage 1-1
 }
@@ -194,10 +194,10 @@ void displayWinMessage() {
 void keyPressed() {
   if (key == 'a' || key == 'A') {
     // Move left, call player.setMovement() to set the moveDir
-
+    player.setMovement(-1);
   } else if (key == 'd' || key == 'D') {
     // Move right, call player.setMovement() to set the moveDir
-
+    player.setMovement(1); 
   } else if (key == 'r' || key == 'R') {
     restartGame();
   }
@@ -206,7 +206,7 @@ void keyPressed() {
 void keyReleased() {
   if (key == 'a' || key == 'A' || key == 'd' || key == 'D') {
     // Stop moving, call player.setMovement() to set the moveDir
-
+    player.setMovement(0);
   }
 } 
 // End of stage 2-1
